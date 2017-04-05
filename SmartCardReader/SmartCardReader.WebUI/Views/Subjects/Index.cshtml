@@ -1,0 +1,36 @@
+﻿@model IEnumerable<SmartCardReader.WebUI.Models.Subject>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div>
+        <table border="1">
+            <tr>
+            <th>Id</th>
+            <th>Teacher_ID</th>
+            <th>Teacher_Name</th>
+            <th>Teacher_Surname</th>
+            <th>Subject_Name</th>
+            </tr>
+            @foreach (var wiersz in Model)
+            {
+                <tr>
+                <td>@wiersz.Id</td>
+                <td>@wiersz.Teacher_ID</td>
+                <td>@wiersz.Teacher_Name</td>
+                <td>@wiersz.Teacher_Surname</td>
+                <td>@wiersz.Subject_Name</td>
+                </tr>
+            }
+        </table>
+    </div>
+</body>
+</html>
