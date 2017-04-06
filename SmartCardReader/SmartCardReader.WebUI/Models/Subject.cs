@@ -15,9 +15,5 @@ namespace SmartCardReader.WebUI.Models
         public string Subject_Name { get; set; }
 
     }
-    public class SubjectDBCtxt : DbContext
-    {
-        public DbSet<Subject> Subjects { get; set; }
-    }
 
 }

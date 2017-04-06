@@ -31,6 +31,7 @@ namespace SmartCardReader.WebUI.Models
             return new ApplicationDbContext();
         }
 
-        public System.Data.Entity.DbSet<SmartCardReader.WebUI.Models.Student> Students { get; set; }
+        public DbSet<Student> Students { get; set; }
+        public DbSet<Subject> Subjects { get; set; }
     }
 }

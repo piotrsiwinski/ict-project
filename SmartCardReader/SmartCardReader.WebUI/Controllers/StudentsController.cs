@@ -8,7 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using SmartCardReader.WebUI.Models;
 
-namespace SmartCardReader.WebUI
+namespace SmartCardReader.Controllers.WebUI
 {
     public class StudentsController : Controller
     {

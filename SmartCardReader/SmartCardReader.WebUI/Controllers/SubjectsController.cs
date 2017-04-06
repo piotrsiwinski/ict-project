@@ -10,7 +10,7 @@ namespace SmartCardReader.WebUI.Controllers
 
     public class SubjectsController : Controller
     {
-        private SubjectDBCtxt baza = new SubjectDBCtxt();
+        private ApplicationDbContext baza = new ApplicationDbContext();
         // GET: Subjects
         public ActionResult Index()
         {
