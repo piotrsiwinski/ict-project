@@ -25,8 +25,8 @@ public class Controller {
 
     public void onDisplayTerminalsButtonClick(ActionEvent actionEvent) {
         try {
-            smartCard.connect();
-            List<CardTerminal> cardTerminals = smartCard.getCardTerminals();
+            smartCard.establishConnection();
+            List<CardTerminal> cardTerminals = smartCard.getConnection().getCardTerminals();
             StringBuilder builder = new StringBuilder();
             builder.append("Available terminals: \n\n");
             for (CardTerminal terminal : cardTerminals) {
@@ -35,9 +35,7 @@ public class Controller {
             this.availableTerminalsLabel.setText(builder.toString());
 
         } catch (Exception e) {
-            //e.printStackTrace();
             this.availableTerminalsLabel.setText("No smart card readers connected");
-
         }
     }
 }

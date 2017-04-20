@@ -1,6 +1,7 @@
 package smarcard;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.smartcardio.*;
 import java.util.ArrayList;
@@ -11,22 +12,16 @@ import java.util.List;
  */
 @Data
 public class SmartCard {
-    private List<CardTerminal> cardTerminals = new ArrayList<CardTerminal>();
 
-    public void connect() throws Exception{
-        // show the list of available terminals
-        TerminalFactory factory = TerminalFactory.getDefault();
-        cardTerminals = factory.terminals().list();
-        System.out.println("Terminals: " + cardTerminals);
-        // get the first terminal
-        CardTerminal terminal = cardTerminals.get(0);
-        // establish a connection with the card
-        Card card = terminal.connect("T=0");
-        System.out.println("card: " + card);
-        //CardChannel channel = card.getBasicChannel();
-        //ResponseAPDU responseAPDU = channel.transmit(new CommandAPDU(new byte[]{}));
-//        System.out.println("response: " + toString(responseAPDU.getBytes()));
-        // disconnect
-        card.disconnect(false);
+    private SmartCardConnector smartCardConnector;
+    private SmartCardConnection connection;
+
+    public SmartCard() {
+        this.smartCardConnector = new SmartCardConnector();
     }
+
+    public void establishConnection() throws CardException{
+        connection = new SmartCardConnector().connect();
+    }
+
 }

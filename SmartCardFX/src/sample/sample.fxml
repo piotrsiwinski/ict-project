@@ -24,6 +24,6 @@
        <Label text="Click to display available terminals" />
        <Button id="btn" fx:id="displayTerminalsButton" mnemonicParsing="false" onAction="#onDisplayTerminalsButtonClick" text="Find terminals" GridPane.rowIndex="1" />
        <!--<Label id="label" mnemonicParsing="false" prefHeight="14.0" prefWidth="258.0" text="Available terminals:" GridPane.rowIndex="2" />-->
-       <Label fx:id="availableTerminalsLabel" GridPane.rowIndex="3" />
+       <Label fx:id="availableTerminalsLabel" GridPane.rowIndex="2" />
    </children>
 </GridPane>

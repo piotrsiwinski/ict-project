@@ -16,12 +16,5 @@ public class Main extends Application {
         primaryStage.show();
     }
 
-
-    public static void main(String[] args) {
-        launch(args);
-
-        //Person p = new Person();
-
-
-    }
+    public static void main(String[] args){launch(args);}
 }
