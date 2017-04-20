@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<SmartCardReader.WebUI.Models.Subject>
 @{
-    
+
 }
 
 <!DOCTYPE html>
@@ -11,6 +11,9 @@
     <title>Index</title>
 </head>
 <body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
     <div>
         <table class="table table-bordered table-striped"  border="1">
             <tr>
@@ -19,6 +22,7 @@
             <th>Teacher_Name</th>
             <th>Teacher_Surname</th>
             <th>Subject_Name</th>
+                <th>Options</th>
             </tr>
             @foreach (var wiersz in Model)
             {
@@ -28,6 +32,11 @@
                 <td>@wiersz.Teacher_Name</td>
                 <td>@wiersz.Teacher_Surname</td>
                 <td>@wiersz.Subject_Name</td>
+                    <td>@Html.ActionLink("Delete", "Remove", new { id = @wiersz.Id })
+                        @Html.ActionLink("Edit", "Edit", new { id = @wiersz.Id })
+                        @Html.ActionLink("Details", "Details", new { id = @wiersz.Id })
+                        
+                    </td>
                 </tr>
             }
         </table>
