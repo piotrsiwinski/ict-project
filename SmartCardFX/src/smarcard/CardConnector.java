@@ -22,8 +22,4 @@ public class CardConnector {
         return card.getBasicChannel();
     }
 
-    public void readUserData()throws CardException{
-
-    }
-
 }
