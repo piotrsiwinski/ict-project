@@ -10,6 +10,7 @@ import smarcard.SmartCard;
 import smarcard.SmartCardTerminalFactory;
 
 import javax.smartcardio.CardTerminal;
+import java.util.List;
 
 public class Controller {
     @FXML
@@ -31,15 +32,20 @@ public class Controller {
 
             SmartCard c = new SmartCard();
             for (CardTerminal terminal : c.getConnectedCardTerminals()) {
-                builder.append(terminal + "\n");
+                builder.append(terminal).append("\n\n");
             }
-            this.availableTerminalsLabel.setText(builder.toString());
-            if(c.getConnectedCardTerminals().size() ==0){
-                this.availableTerminalsLabel.setText("No smart card readers connected");
-            }
+
+//            if(c.getConnectedCardTerminals().size() ==0){
+//                this.availableTerminalsLabel.setText("No smart card readers connected");
+//            }
             SmartCard card = new SmartCard();
             card.connect(0);
-            card.getData();
+            List<String> studentData = card.getData();
+
+            for(String data: studentData){
+                builder.append(data).append("\n");
+            }
+            this.availableTerminalsLabel.setText(builder.toString());
 
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Ok");

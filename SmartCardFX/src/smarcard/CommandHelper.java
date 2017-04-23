@@ -49,6 +49,16 @@ public class CommandHelper {
                 (byte) 0x02}; // FID 2 (low)
     }
 
+    public static byte[] CMD_READ_DATA(){
+        return new byte[]{
+        (byte) 0x00, // CLA
+        (byte) 0xB0, // INS
+        (byte) 0x00, // P1
+        (byte) 0x00, // P2
+        (byte) 0xFF // Lc
+        };
+    }
+
     public static boolean checkResponse(ResponseAPDU responseAPDU){
         byte[] response = responseAPDU.getBytes();
         if (response[response.length - 2] == (byte) 0x90 && response[response.length - 1] == (byte) 0x00) {

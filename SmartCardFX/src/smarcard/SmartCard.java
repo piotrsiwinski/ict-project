@@ -1,5 +1,7 @@
 package smarcard;
+
 import javax.smartcardio.*;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -38,10 +40,9 @@ public class SmartCard {
         return connectedCardTerminals;
     }
 
-    public void getData() throws CardException {
+    public List<String> getData() throws CardException {
         openEF0002File();
-        //TODO(1): Refactor this
-        readStudentCardData();
+        return getRawData();
     }
 
     private void openEF0002File() throws CardException {
@@ -59,8 +60,27 @@ public class SmartCard {
 
     }
 
-    private void readStudentCardData() throws CardException {
-        //TODO
-    }
+    private List<String> getRawData() throws CardException {
+        List<String> data = new ArrayList<String>() {};
+        StringBuilder builder = new StringBuilder();
 
+        ResponseAPDU readDataResponse = channel.transmit(new CommandAPDU(CommandHelper.CMD_READ_DATA()));
+        byte[] responseBytes = readDataResponse.getBytes();
+
+        for (int i = 0; i < responseBytes.length - 2; i++) {
+            int code = (int) responseBytes[i];
+            if (code <= 0) {
+                continue;
+            }
+            char c = (char) responseBytes[i];
+            if ((code > 31) && (code < 256)) {
+                builder.append(c);
+            }
+            if ((code == 0x0C || code == 0x13 || code == 0x18)) {
+                data.add(builder.toString());
+                builder.setLength(0);
+            }
+        }
+        return data;
+    }
 }
