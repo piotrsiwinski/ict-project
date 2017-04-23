@@ -48,12 +48,12 @@ public class Controller {
             this.availableTerminalsLabel.setText(builder.toString());
 
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Ok");
-            alert.setHeaderText("Passed");
-            alert.setContentText("Ok");
+            alert.setTitle("Student data");
+            alert.setHeaderText("");
+            alert.setContentText(studentData.toString());
             alert.showAndWait();
-
         } catch (Exception e) {
+            this.availableTerminalsLabel.setText("");
             e.printStackTrace();
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error occured");
