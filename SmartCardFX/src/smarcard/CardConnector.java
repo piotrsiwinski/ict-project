@@ -18,8 +18,13 @@ public class CardConnector {
         return this.connectToCardTerminal(terminal, "T=0");
     }
     public CardChannel connectToCardTerminal(CardTerminal terminal, String protocol)throws CardException{
-        Card card = terminal.connect(protocol);
-        return card.getBasicChannel();
+        try{
+            Card card = terminal.connect(protocol);
+            card.getATR().getBytes();
+            return card.getBasicChannel();
+        }catch (CardException e){
+            throw new CardException("Card inserted incorrectly");
+        }
     }
 
 }

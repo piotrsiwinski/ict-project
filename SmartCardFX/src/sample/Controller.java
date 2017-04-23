@@ -37,7 +37,9 @@ public class Controller {
             if(c.getConnectedCardTerminals().size() ==0){
                 this.availableTerminalsLabel.setText("No smart card readers connected");
             }
-            new SmartCard().connect(0);
+            SmartCard card = new SmartCard();
+            card.connect(0);
+            card.getData();
 
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Ok");
