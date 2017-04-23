@@ -1,5 +1,7 @@
 package smarcard;
 
+import smarcard.Models.Student;
+
 import javax.smartcardio.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -40,9 +42,10 @@ public class SmartCard {
         return connectedCardTerminals;
     }
 
-    public List<String> getData() throws CardException {
+    public Student getData() throws CardException {
         openEF0002File();
-        return getRawData();
+        List<String> data = getRawData();
+        return convertData(data);
     }
 
     private void openEF0002File() throws CardException {
@@ -82,5 +85,15 @@ public class SmartCard {
             }
         }
         return data;
+    }
+
+    private Student convertData(List<String> data){
+        Student result = new Student();
+        result.setFirstName(data.get(4));
+        result.setSecondName(data.get(5));
+        result.setSurname(data.get(3));
+        result.setUniversity(data.get(2));
+        result.setIndexNumber(data.get(6));
+        return result;
     }
 }

@@ -6,6 +6,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import smarcard.CardConnector;
+import smarcard.Models.Student;
 import smarcard.SmartCard;
 import smarcard.SmartCardTerminalFactory;
 
@@ -40,11 +41,10 @@ public class Controller {
 //            }
             SmartCard card = new SmartCard();
             card.connect(0);
-            List<String> studentData = card.getData();
 
-            for(String data: studentData){
-                builder.append(data).append("\n");
-            }
+            Student studentData = card.getData();
+            builder.append(studentData.toString()).append("\n");
+
             this.availableTerminalsLabel.setText(builder.toString());
 
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
