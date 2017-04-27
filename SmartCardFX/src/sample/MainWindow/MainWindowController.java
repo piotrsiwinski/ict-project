@@ -1,4 +1,4 @@
-package sample;
+package sample.MainWindow;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -8,12 +8,14 @@ import javafx.scene.control.Label;
 import smarcard.CardConnector;
 import smarcard.Models.Student;
 import smarcard.SmartCard;
-import smarcard.SmartCardTerminalFactory;
 
 import javax.smartcardio.CardTerminal;
-import java.util.List;
 
-public class Controller {
+
+/**
+ * Created by Piotrek on 27.04.2017.
+ */
+public class MainWindowController {
     @FXML
     private Button displayTerminalsButton;
     @FXML
@@ -21,9 +23,7 @@ public class Controller {
 
     private CardConnector smartCard;
 
-
-    public Controller() {
-        this.smartCard = new CardConnector();
+    public void processExit(ActionEvent actionEvent) {
     }
 
     public void onDisplayTerminalsButtonClick(ActionEvent actionEvent) {
@@ -36,9 +36,6 @@ public class Controller {
                 builder.append(terminal).append("\n\n");
             }
 
-//            if(c.getConnectedCardTerminals().size() ==0){
-//                this.availableTerminalsLabel.setText("No smart card readers connected");
-//            }
             SmartCard card = new SmartCard();
             card.connect(0);
 
@@ -54,7 +51,7 @@ public class Controller {
             alert.showAndWait();
         } catch (Exception e) {
             this.availableTerminalsLabel.setText("");
-            e.printStackTrace();
+            //e.printStackTrace();
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error occured");
             alert.setHeaderText("Oops, error occured");

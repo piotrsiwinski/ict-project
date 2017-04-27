@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MainWindow.MainWindowController">
+   <children>
+       <VBox id="vbox" prefWidth="Infinity" xmlns:fx="http://javafx.com/fxml">
+          <children>
+              <MenuBar id="menuBar" focusTraversable="true">
+                  <menus>
+                      <Menu text="File">
+                          <items>
+                              <MenuItem text="Open" />
+                              <MenuItem text="Save" />
+                              <MenuItem text="Save As" />
+                              <SeparatorMenuItem />
+                              <MenuItem onAction="#processExit" text="Exit" />
+                          </items>
+                      </Menu>
+                      <Menu text="JavaFX 2.0 Examples">
+                          <items>
+                              <MenuItem text="Text Example" />
+                              <MenuItem text="Objects Example" />
+                              <MenuItem text="Animation Example" />
+                          </items>
+                      </Menu>
+                      <Menu text="Help">
+                          <items>
+                              <MenuItem disable="true" text="Search" />
+                              <MenuItem text="Online Manual" visible="false" />
+                              <SeparatorMenuItem />
+                              <MenuItem text="About" />
+                          </items>
+                      </Menu>
+                  </menus>
+              </MenuBar>
+          </children>
+       </VBox>
+
+       <GridPane alignment="center" hgap="10" minHeight="640" minWidth="480" prefHeight="800" prefWidth="600" vgap="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+           <columnConstraints>
+               <ColumnConstraints />
+               <ColumnConstraints />
+           </columnConstraints>
+           <rowConstraints>
+               <RowConstraints />
+               <RowConstraints />
+               <RowConstraints />
+               <RowConstraints minHeight="10.0" prefHeight="30.0" />
+           </rowConstraints>
+           <children>
+
+               <Label text="Click to display available terminals" />
+               <Button id="btn" fx:id="displayTerminalsButton" mnemonicParsing="false" onAction="#onDisplayTerminalsButtonClick" text="Find terminals" GridPane.rowIndex="1" />
+               <!--<Label id="label" mnemonicParsing="false" prefHeight="14.0" prefWidth="258.0" text="Available terminals:" GridPane.rowIndex="2" />-->
+               <Label fx:id="availableTerminalsLabel" GridPane.rowIndex="2" />
+           </children>
+       </GridPane>
+   </children>
+</Pane>
