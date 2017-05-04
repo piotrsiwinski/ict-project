@@ -6,39 +6,6 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MainWindow.MainWindowController">
    <children>
-       <VBox id="vbox" prefWidth="Infinity" xmlns:fx="http://javafx.com/fxml">
-          <children>
-              <MenuBar id="menuBar" focusTraversable="true">
-                  <menus>
-                      <Menu text="File">
-                          <items>
-                              <MenuItem text="Open" />
-                              <MenuItem text="Save" />
-                              <MenuItem text="Save As" />
-                              <SeparatorMenuItem />
-                              <MenuItem onAction="#processExit" text="Exit" />
-                          </items>
-                      </Menu>
-                      <Menu text="JavaFX 2.0 Examples">
-                          <items>
-                              <MenuItem text="Text Example" />
-                              <MenuItem text="Objects Example" />
-                              <MenuItem text="Animation Example" />
-                          </items>
-                      </Menu>
-                      <Menu text="Help">
-                          <items>
-                              <MenuItem disable="true" text="Search" />
-                              <MenuItem text="Online Manual" visible="false" />
-                              <SeparatorMenuItem />
-                              <MenuItem text="About" />
-                          </items>
-                      </Menu>
-                  </menus>
-              </MenuBar>
-          </children>
-       </VBox>
-
        <GridPane alignment="center" hgap="10" minHeight="640" minWidth="480" prefHeight="800" prefWidth="600" vgap="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
            <columnConstraints>
                <ColumnConstraints />
