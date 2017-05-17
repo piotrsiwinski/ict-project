@@ -189,6 +189,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\EventController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\SubjectsController.cs" />
@@ -198,6 +199,10 @@
     <Compile Include="Migrations\201704191751210_pierwsza.cs" />
     <Compile Include="Migrations\201704191751210_pierwsza.Designer.cs">
       <DependentUpon>201704191751210_pierwsza.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705171827323_InitialMigrations.cs" />
+    <Compile Include="Migrations\201705171827323_InitialMigrations.Designer.cs">
+      <DependentUpon>201705171827323_InitialMigrations.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -210,6 +215,10 @@
     <Compile Include="Controllers\StudentsController.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\DefaultConnection.mdf" />
+    <Content Include="App_Data\DefaultConnection_log.ldf">
+      <DependentUpon>DefaultConnection.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
@@ -281,7 +290,7 @@
     <Content Include="Views\Subjects\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
+    <Folder Include="Views\Event\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -301,6 +310,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201704191751210_pierwsza.resx">
       <DependentUpon>201704191751210_pierwsza.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705171827323_InitialMigrations.resx">
+      <DependentUpon>201705171827323_InitialMigrations.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

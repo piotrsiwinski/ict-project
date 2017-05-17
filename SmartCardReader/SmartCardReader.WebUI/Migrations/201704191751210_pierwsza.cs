@@ -48,7 +48,7 @@ namespace SmartCardReader.WebUI.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        Teacher_ID = c.Int(nullable: false),
+                        Teacher_ID = c.String(),
                         Teacher_Name = c.String(),
                         Teacher_Surname = c.String(),
                         Subject_Name = c.String(),

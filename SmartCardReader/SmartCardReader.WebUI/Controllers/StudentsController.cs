@@ -15,12 +15,21 @@ namespace SmartCardReader.Controllers.WebUI
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Students
+        
         public ActionResult Index()
         {
-            return View(db.Students.ToList());
+            if ((System.Web.HttpContext.Current.User != null) && System.Web.HttpContext.Current.User.Identity.IsAuthenticated)
+            {
+                
+                return View(db.Students.ToList());
+            }
+
+            return RedirectToAction("Login", "Account");
+
         }
 
         // GET: Students/Details/5
+        
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -36,6 +45,7 @@ namespace SmartCardReader.Controllers.WebUI
         }
 
         // GET: Students/Create
+     
         public ActionResult Create()
         {
             return View();
@@ -45,7 +55,7 @@ namespace SmartCardReader.Controllers.WebUI
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
+      
         public ActionResult Create([Bind(Include = "Id,Name,Surname,Transcript_number,Major,Email_address")] Student student)
         {
             if (ModelState.IsValid)
@@ -59,6 +69,7 @@ namespace SmartCardReader.Controllers.WebUI
         }
 
         // GET: Students/Edit/5
+     
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -77,7 +88,7 @@ namespace SmartCardReader.Controllers.WebUI
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
+       
         public ActionResult Edit([Bind(Include = "Id,Name,Surname,Transcript_number,Major,Email_address")] Student student)
         {
             if (ModelState.IsValid)
@@ -90,6 +101,7 @@ namespace SmartCardReader.Controllers.WebUI
         }
 
         // GET: Students/Delete/5
+       
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -106,7 +118,7 @@ namespace SmartCardReader.Controllers.WebUI
 
         // POST: Students/Delete/5
         [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
+       
         public ActionResult DeleteConfirmed(int id)
         {
             Student student = db.Students.Find(id);
