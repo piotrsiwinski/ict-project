@@ -1,9 +1,12 @@
 package services;
 
-import java.io.IOException;
+import com.google.gson.Gson;
+import smarcard.Models.Event;
+import sun.net.www.http.HttpClient;
+
+import java.io.*;
 import java.util.Scanner;
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -14,7 +17,8 @@ import java.util.Scanner;
  */
 public class SubjectService {
     private String URL = "http://localhost:18975/api/";
-    public URL CreateURL(String url){
+
+    public URL CreateURL(String url) {
         URL result = null;
         try {
             result = new URL(url);
@@ -25,7 +29,7 @@ public class SubjectService {
         return result;
     }
 
-    public String getSubjects(){
+    public String getSubjects() {
         try {
             String result = getResponseFromHttpUrl(this.CreateURL(this.URL + "Subjects"));
             return result;
@@ -36,6 +40,34 @@ public class SubjectService {
         return "";
     }
 
+    public int addEventToStudent(Event event) throws Exception {
+        Gson gson = new Gson();
+        String json = gson.toJson(event);
+
+        //TODO: Insert right url
+        URL url = new URL(this.URL + "Events");
+        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+
+        connection.setDoOutput(true);
+        connection.setInstanceFollowRedirects(false);
+        connection.setRequestMethod("POST");
+        connection.setRequestProperty("Content-Type", "application/json");
+        connection.setRequestProperty("charset", "utf-8");
+        connection.setRequestProperty("Content-Length", Integer.toString(json.length()));
+        connection.setUseCaches(false);
+        connection.getOutputStream().write(json.getBytes());
+
+        OutputStreamWriter wr = new OutputStreamWriter(connection.getOutputStream());
+        wr.write(json.toString());
+        wr.flush();
+        wr.close();
+
+        int res = connection.getResponseCode();
+
+        connection.disconnect();
+        return res;
+
+    }
 
     private String getResponseFromHttpUrl(URL url) throws IOException {
         HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();

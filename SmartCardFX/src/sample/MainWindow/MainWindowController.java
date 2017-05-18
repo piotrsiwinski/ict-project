@@ -16,6 +16,7 @@ import javafx.scene.control.Label;
 import jdk.nashorn.internal.parser.JSONParser;
 import services.SubjectService;
 import smarcard.CardConnector;
+import smarcard.Models.Event;
 import smarcard.Models.Student;
 import smarcard.Models.Subject;
 import smarcard.Models.SubjectsList;
@@ -24,6 +25,7 @@ import smarcard.SmartCard;
 import javax.smartcardio.CardTerminal;
 import java.io.FileReader;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.*;
 import java.util.stream.Collector;
@@ -44,6 +46,14 @@ public class MainWindowController implements Initializable {
     private ObservableList<String> items = FXCollections.observableArrayList();
 
     private CardConnector smartCard;
+    private Subject[] subjects;
+    private SubjectService subjectService = new SubjectService();
+    private Student studentData;
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        this.initialize();
+    }
 
     private void initialize() {
         if (this.subjectComboBox != null) {
@@ -51,20 +61,19 @@ public class MainWindowController implements Initializable {
         }
     }
 
-    public void getAvailableEvents(){
-        SubjectService subjectService = new SubjectService();
-        String result = subjectService.getSubjects();
-
-        Gson gson = new Gson();
-        Subject[] subjects = gson.fromJson(result, Subject[].class);
-        List<String> arr = Arrays.stream(subjects).map(x -> x.getSubjectName()).collect(Collectors.toList());
-
-        this.items = FXCollections.observableArrayList(arr.toArray(new String[0]));
-        this.subjectComboBox.setItems(items);
-
+    public void onDisplayTerminalsButtonClick(ActionEvent actionEvent) {
+        this.getStudentData();
     }
 
-    public void onDisplayTerminalsButtonClick(ActionEvent actionEvent) {
+    public void onRefreshClick(ActionEvent actionEvent) {
+        this.getAvailableEvents();
+    }
+
+    public void onSendButton(ActionEvent actionEvent) {
+        this.sendEvent();
+    }
+
+    private void getStudentData() {
         try {
             StringBuilder builder = new StringBuilder();
             builder.append("Available terminals: \n\n");
@@ -77,7 +86,7 @@ public class MainWindowController implements Initializable {
             SmartCard card = new SmartCard();
             card.connect(0);
 
-            Student studentData = card.getData();
+            studentData = card.getData();
             builder.append(studentData.toString()).append("\n");
 
             this.availableTerminalsLabel.setText(builder.toString());
@@ -99,12 +108,51 @@ public class MainWindowController implements Initializable {
         }
     }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        this.initialize();
+    private void getAvailableEvents() {
+        String result = subjectService.getSubjects();
+        try {
+            Gson gson = new Gson();
+            this.subjects = gson.fromJson(result, Subject[].class);
+            List<String> arr = Arrays.stream(subjects).map(x -> x.getSubjectName()).collect(Collectors.toList());
+
+            this.items = FXCollections.observableArrayList(arr.toArray(new String[0]));
+            this.subjectComboBox.setItems(items);
+        } catch (Exception e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error occured");
+            alert.setHeaderText("No events available");
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
+        }
+
+
     }
 
-    public void onRefreshClick(ActionEvent actionEvent) {
-        this.getAvailableEvents();
+    private void sendEvent() {
+        try {
+            String result = this.subjectComboBox.getValue().toString();
+            Subject subject = Arrays.stream(subjects).filter(x -> x.getSubjectName().equals(result)).findFirst().get();
+            Event event = new Event(this.studentData.getIndexNumber(), subject.getId());
+            System.out.println(subject.toString());
+            int response = this.subjectService.addEventToStudent(event);
+            if (200 <= response && response < 300) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Success");
+                alert.setHeaderText("Success");
+                alert.setContentText("Successfully added you to event");
+                alert.showAndWait();
+            }else{
+                throw new Exception("Server responded with code: " +  response);
+            }
+
+        } catch (NullPointerException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error occured");
+            alert.setHeaderText("Oops, error occured");
+            alert.setContentText("Please select event or refresh");
+            alert.showAndWait();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
