@@ -1,31 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
+using SmartCardReader.WebUI.Concrete;
 using SmartCardReader.WebUI.Models;
 
-namespace SmartCardReader.Controllers.WebUI
+namespace SmartCardReader.WebUI.Controllers
 {
-    public class StudentsController : Controller
+    [Authorize]
+    public class StudentController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Students
-        
+       
         public ActionResult Index()
         {
-            if ((System.Web.HttpContext.Current.User != null) && System.Web.HttpContext.Current.User.Identity.IsAuthenticated)
-            {
-                
-                return View(db.Students.ToList());
-            }
-
-            return RedirectToAction("Login", "Account");
-
+            return View(db.Students.ToList());
         }
 
         // GET: Students/Details/5

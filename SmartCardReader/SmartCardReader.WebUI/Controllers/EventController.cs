@@ -1,89 +1,124 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Data.Entity;
 using System.Linq;
-using System.Web;
+using System.Net;
 using System.Web.Mvc;
+using SmartCardReader.WebUI.Concrete;
+using SmartCardReader.WebUI.Models;
 
 namespace SmartCardReader.WebUI.Controllers
 {
     public class EventController : Controller
     {
-        // GET: Event
+        private ApplicationDbContext db = new ApplicationDbContext();
+
+        // GET: Events
         public ActionResult Index()
         {
-            return View();
+            return View(db.Events.ToList());
         }
 
-        // GET: Event/Details/5
-        public ActionResult Details(int id)
+        // GET: Events/Details/5
+        public ActionResult Details(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Event @event = db.Events.Find(id);
+            if (@event == null)
+            {
+                return HttpNotFound();
+            }
+            return View(@event);
         }
 
-        // GET: Event/Create
+        // GET: Events/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Event/Create
+        // POST: Events/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "Id,StudentId,SubjectId")] Event @event)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add insert logic here
-
+                db.Events.Add(@event);
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            catch
+
+            return View(@event);
+        }
+
+        // GET: Events/Edit/5
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
             {
-                return View();
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-        }
-
-        // GET: Event/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: Event/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
+            Event @event = db.Events.Find(id);
+            if (@event == null)
             {
-                // TODO: Add update logic here
+                return HttpNotFound();
+            }
+            return View(@event);
+        }
 
+        // POST: Events/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "Id,StudentId,SubjectId")] Event @event)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(@event).State = EntityState.Modified;
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+            return View(@event);
         }
 
-        // GET: Event/Delete/5
-        public ActionResult Delete(int id)
+        // GET: Events/Delete/5
+        public ActionResult Delete(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Event @event = db.Events.Find(id);
+            if (@event == null)
+            {
+                return HttpNotFound();
+            }
+            return View(@event);
         }
 
-        // POST: Event/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        // POST: Events/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
         {
-            try
-            {
-                // TODO: Add delete logic here
+            Event @event = db.Events.Find(id);
+            db.Events.Remove(@event);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
 
-                return RedirectToAction("Index");
-            }
-            catch
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
             {
-                return View();
+                db.Dispose();
             }
+            base.Dispose(disposing);
         }
     }
 }

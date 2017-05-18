@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 
-namespace SmartCardReader.WebUI.Models
+namespace SmartCardReader.WebUI.ViewModels
 {
     public class IndexViewModel
     {

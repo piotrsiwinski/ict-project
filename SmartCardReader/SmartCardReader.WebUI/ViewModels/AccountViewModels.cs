@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace SmartCardReader.WebUI.Models
+namespace SmartCardReader.WebUI.ViewModels
 {
     public class ExternalLoginConfirmationViewModel
     {
