@@ -7,13 +7,13 @@ namespace SmartCardReader.WebUI.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class pierwsza : IMigrationMetadata
+    public sealed partial class Give_it_a_name : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(pierwsza));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Give_it_a_name));
         
         string IMigrationMetadata.Id
         {
-            get { return "201704191751210_pierwsza"; }
+            get { return "201705181215553_Give_it_a_name"; }
         }
         
         string IMigrationMetadata.Source

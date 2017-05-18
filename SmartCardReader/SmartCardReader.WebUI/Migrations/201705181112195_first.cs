@@ -3,10 +3,19 @@ namespace SmartCardReader.WebUI.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class pierwsza : DbMigration
+    public partial class first : DbMigration
     {
         public override void Up()
         {
+            CreateTable(
+                "dbo.Events",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        StudentId = c.String(),
+                    })
+                .PrimaryKey(t => t.Id);
+            
             CreateTable(
                 "dbo.AspNetRoles",
                 c => new
@@ -121,6 +130,7 @@ namespace SmartCardReader.WebUI.Migrations
             DropTable("dbo.Students");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetRoles");
+            DropTable("dbo.Events");
         }
     }
 }
