@@ -1,29 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<?import javafx.scene.control.*?>
 <?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MainWindow.MainWindowController">
+<StackPane nodeOrientation="LEFT_TO_RIGHT" prefHeight="800" prefWidth="600" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="sample.MainWindow.MainWindowController">
    <children>
-       <GridPane alignment="center" hgap="10" minHeight="640" minWidth="480" prefHeight="800" prefWidth="600" vgap="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
-           <columnConstraints>
-               <ColumnConstraints />
-               <ColumnConstraints />
-           </columnConstraints>
-           <rowConstraints>
-               <RowConstraints />
-               <RowConstraints />
-               <RowConstraints />
-               <RowConstraints minHeight="10.0" prefHeight="30.0" />
-           </rowConstraints>
-           <children>
-
-               <Label text="Click to display available terminals" />
-               <Button id="btn" fx:id="displayTerminalsButton" mnemonicParsing="false" onAction="#onDisplayTerminalsButtonClick" text="Find terminals" GridPane.rowIndex="1" />
-               <!--<Label id="label" mnemonicParsing="false" prefHeight="14.0" prefWidth="258.0" text="Available terminals:" GridPane.rowIndex="2" />-->
-               <Label fx:id="availableTerminalsLabel" GridPane.rowIndex="2" />
-           </children>
-       </GridPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0">
+         <children>
+             <ComboBox id="scb" fx:id="subjectComboBox" layoutX="120.0" layoutY="400.0" prefHeight="31.0" prefWidth="165.0" promptText="choose">
+    </ComboBox>
+             <!--<Label id="label" mnemonicParsing="false" prefHeight="14.0" prefWidth="258.0" text="Available terminals:" GridPane.rowIndex="2" />-->
+             <Label fx:id="availableTerminalsLabel" prefHeight="25" prefWidth="40" />
+             <Button id="btn" fx:id="displayTerminalsButton" layoutX="191.0" layoutY="194.0" mnemonicParsing="false" onAction="#onDisplayTerminalsButtonClick" prefHeight="51.0" prefWidth="188.0" text="Find terminals" />
+         
+             <Label layoutX="161.0" layoutY="159.0" text="Click to display available terminals" />
+            <Label layoutX="257.0" layoutY="338.0" text="Active events" />
+            <Button fx:id="refreshButton" layoutX="355.0" layoutY="400.0" mnemonicParsing="false" onAction="#onRefreshClick" text="Refresh" />
+         </children>
+      </AnchorPane>
    </children>
-</Pane>
+
+</StackPane>
