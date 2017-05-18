@@ -1,4 +1,5 @@
 ﻿using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
@@ -20,18 +21,21 @@ namespace SmartCardReader.WebUI.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+        public ApplicationDbContext() : base("name=DefaultConnection")
         {
-            Database.SetInitializer<ApplicationDbContext>(new DropCreateDatabaseIfModelChanges<ApplicationDbContext>());
+            Database.SetInitializer<ApplicationDbContext>(new CreateDatabaseIfNotExists<ApplicationDbContext>());
+           
         }
 
         public static ApplicationDbContext Create()
         {
+
             return new ApplicationDbContext();
         }
 
         public DbSet<Student> Students { get; set; }
         public DbSet<Subject> Subjects { get; set; }
+
+        public System.Data.Entity.DbSet<SmartCardReader.WebUI.Models.Event> Events { get; set; }
     }
 }
