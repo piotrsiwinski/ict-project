@@ -1,12 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26228.9
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartCardReader.Library", "SmartCardReader.Library\SmartCardReader.Library.csproj", "{17929498-B5EA-41F9-A6C6-5ECD292EE639}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartCardReader.App", "SmartCardReader.App\SmartCardReader.App.csproj", "{2C8310F2-702B-4C43-9086-65480B7FE034}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartCardReader.WebUI", "SmartCardReader.WebUI\SmartCardReader.WebUI.csproj", "{4AD2A041-CFC8-4FAF-BFE9-AAB409253011}"
 EndProject
 Global
@@ -15,14 +11,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{17929498-B5EA-41F9-A6C6-5ECD292EE639}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{17929498-B5EA-41F9-A6C6-5ECD292EE639}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{17929498-B5EA-41F9-A6C6-5ECD292EE639}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{17929498-B5EA-41F9-A6C6-5ECD292EE639}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2C8310F2-702B-4C43-9086-65480B7FE034}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2C8310F2-702B-4C43-9086-65480B7FE034}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2C8310F2-702B-4C43-9086-65480B7FE034}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2C8310F2-702B-4C43-9086-65480B7FE034}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4AD2A041-CFC8-4FAF-BFE9-AAB409253011}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4AD2A041-CFC8-4FAF-BFE9-AAB409253011}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4AD2A041-CFC8-4FAF-BFE9-AAB409253011}.Release|Any CPU.ActiveCfg = Release|Any CPU
