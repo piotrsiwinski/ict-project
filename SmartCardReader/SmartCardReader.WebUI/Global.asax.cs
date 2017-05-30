@@ -6,6 +6,8 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using System.Web.Http;
+using Autofac.Integration.Mvc;
+using SmartCardReader.ServiceLayer.DI;
 
 namespace SmartCardReader.WebUI
 {
@@ -19,7 +21,7 @@ namespace SmartCardReader.WebUI
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            
+            DependencyResolver.SetResolver(new AutofacDependencyResolver(AutofacResolver.GetContainer()));
         }
     }
 }
