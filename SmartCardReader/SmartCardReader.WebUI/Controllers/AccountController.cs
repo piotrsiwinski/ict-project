@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using SmartCardReader.DataAccessLayer.Models;
 using SmartCardReader.WebUI.Models;
 using SmartCardReader.WebUI.ViewModels;
 
@@ -152,8 +153,15 @@ namespace SmartCardReader.WebUI.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new Account { UserName = model.Email, Email = model.Email };
+                var lecturer = new Lecturer
+                {
+                    FirstName = model.FirstName, 
+                    LastName = model.LastName
+                };
+                user.Lecturer = lecturer;
                 var result = await UserManager.CreateAsync(user, model.Password);
+                
                 if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
@@ -368,7 +376,7 @@ namespace SmartCardReader.WebUI.Controllers
                 {
                     return View("ExternalLoginFailure");
                 }
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new Account { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
                 {

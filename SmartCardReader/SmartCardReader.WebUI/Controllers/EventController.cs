@@ -1,13 +1,11 @@
 ﻿using System.Data.Entity;
-using System.Linq;
 using System.Net;
 using System.Web.Mvc;
-using SmartCardReader.WebUI.Concrete;
 using SmartCardReader.WebUI.Models;
 
 namespace SmartCardReader.WebUI.Controllers
 {
-    public class EventController : Controller
+    /*public class EventController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
@@ -120,5 +118,5 @@ namespace SmartCardReader.WebUI.Controllers
             }
             base.Dispose(disposing);
         }
-    }
+    }*/
 }

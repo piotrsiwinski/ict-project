@@ -5,12 +5,11 @@ using System.Linq;
 using System.Net;
 using System.Web.Http;
 using System.Web.Http.Description;
-using SmartCardReader.WebUI.Concrete;
 using SmartCardReader.WebUI.Models;
 
 namespace SmartCardReader.WebUI.api.Controllers
 {
-    public class SubjectsController : ApiController
+    /*public class SubjectsController : ApiController
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
@@ -119,5 +118,5 @@ namespace SmartCardReader.WebUI.api.Controllers
         {
             return db.Subjects.Count(e => e.Id == id) > 0;
         }
-    }
+    }*/
 }

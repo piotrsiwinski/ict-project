@@ -1,14 +1,7 @@
-﻿using SmartCardReader.WebUI.Models;
-using System.Data.Entity;
-using System.Linq;
-using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
-using SmartCardReader.WebUI.Concrete;
-
-namespace SmartCardReader.WebUI.Controllers
+﻿namespace SmartCardReader.WebUI.Controllers
 {
 
-    public class SubjectController : Controller
+    /*public class SubjectController : Controller
     {
         private ApplicationDbContext baza = new ApplicationDbContext();
       
@@ -111,5 +104,5 @@ namespace SmartCardReader.WebUI.Controllers
 
 
    
-    }
+    }*/
 }

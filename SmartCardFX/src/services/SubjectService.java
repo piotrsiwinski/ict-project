@@ -2,11 +2,10 @@ package services;
 
 import com.google.gson.Gson;
 import smarcard.Models.Event;
-import sun.net.www.http.HttpClient;
 
-import java.io.*;
-import java.util.Scanner;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -16,7 +15,7 @@ import java.util.Scanner;
  * Created by Piotrek on 18.05.2017.
  */
 public class SubjectService {
-    private String URL = "http://localhost:18975/api/";
+    private String URL = "http://localhost:5001/api/";
 
     public URL CreateURL(String url) {
         URL result = null;
@@ -31,7 +30,7 @@ public class SubjectService {
 
     public String getSubjects() {
         try {
-            String result = getResponseFromHttpUrl(this.CreateURL(this.URL + "Subjects"));
+            String result = getResponseFromHttpUrl(this.CreateURL(this.URL + "Class"));
             return result;
 
         } catch (IOException e) {

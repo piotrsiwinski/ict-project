@@ -3,7 +3,7 @@ using SmartCardReader.DataAccessLayer.Concrete;
 
 namespace SmartCardReader.DataAccessLayer.Initializers
 {
-    public class CustomDbInitializer : DropCreateDatabaseAlways<EfDbContext>
+    public class CustomDbInitializer : DropCreateDatabaseIfModelChanges<EfDbContext>
     {
         public CustomDbInitializer()
         {

@@ -35,6 +35,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Autofac, Version=4.6.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.4.6.0\lib\net45\Autofac.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
@@ -74,6 +78,10 @@
     <ProjectReference Include="..\SmartCardReader.DataAccessLayer\SmartCardReader.DataAccessLayer.csproj">
       <Project>{7A67600F-3BA7-47C8-8E3A-6B17129BFEBE}</Project>
       <Name>SmartCardReader.DataAccessLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SmartCardReader.ServiceLayer\SmartCardReader.ServiceLayer.csproj">
+      <Project>{F0B700FC-F591-4033-BCA7-FF9A9CA2B12B}</Project>
+      <Name>SmartCardReader.ServiceLayer</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

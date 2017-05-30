@@ -71,6 +71,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\Abstract\AbstractRepository.cs" />
     <Compile Include="Repository\Abstract\IRepository.cs" />
+    <Compile Include="Repository\Base\IClassRepository.cs" />
+    <Compile Include="Repository\ClassRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

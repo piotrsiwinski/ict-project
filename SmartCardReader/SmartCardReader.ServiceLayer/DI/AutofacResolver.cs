@@ -1,6 +1,10 @@
 ﻿using Autofac;
 using Autofac.Integration.Mvc;
 using SmartCardReader.DataAccessLayer.Concrete;
+using SmartCardReader.DataAccessLayer.Repository;
+using SmartCardReader.DataAccessLayer.Repository.Base;
+using SmartCardReader.ServiceLayer.Base.Class;
+using SmartCardReader.ServiceLayer.Implementation;
 
 namespace SmartCardReader.ServiceLayer.DI
 {
@@ -12,10 +16,12 @@ namespace SmartCardReader.ServiceLayer.DI
         {
             Build();
         }
+
         public static IContainer GetContainer()
         {
             return _container;
         }
+
         private static void Build()
         {
             var containerBuilder = new ContainerBuilder();
@@ -24,9 +30,17 @@ namespace SmartCardReader.ServiceLayer.DI
             _container = containerBuilder.Build();
         }
 
+        public static T Resolve<T>()
+        {
+            var scope = _container.BeginLifetimeScope();
+            return scope.Resolve<T>();
+        }
+
         private static void RegisterTypes(ContainerBuilder containerBuilder)
         {
             containerBuilder.RegisterType<EfDbContext>().As<EfDbContext>();
+            containerBuilder.RegisterType<ClassRepository>().As<IClassRepository>();
+            containerBuilder.RegisterType<ClassService>().As<IClassService>();
         }
     }
 }
