@@ -89,3 +89,30 @@ INSERT INTO [ictDb_dev].[dbo].[AspNetUsers]([Id],[FirstName],[LastName],[Email],
 
 --LecturerCourses
   INSERT INTO [ictDb_dev].[dbo].[LecturerCourses]([Lecturer_Id],[Course_Id]) VALUES(1, 3);
+  
+  
+--Students 
+SET IDENTITY_INSERT [ictDb_dev].[dbo].[Students] ON
+
+  INSERT INTO [ictDb_dev].[dbo].[Students]([Id],[FirstName],[LastName]) VALUES ('112233', 'Adam', 'Adamiak');
+  INSERT INTO [ictDb_dev].[dbo].[Students]([Id],[FirstName],[LastName]) VALUES ('223344', 'Joanna', 'Adamiak');
+  SET IDENTITY_INSERT [ictDb_dev].[dbo].[Students] OFF
+  
+  
+  
+  -- Student Majors
+INSERT INTO [ictDb_dev].[dbo].[StudentMajors]([Student_Id],[Major_Id]) VALUES (112233, 3);
+INSERT INTO [ictDb_dev].[dbo].[StudentMajors]([Student_Id],[Major_Id]) VALUES (223344, 3);
+
+-- Student Courses 
+
+INSERT INTO [ictDb_dev].[dbo].[StudentClasses]([Student_Id],[Class_Id]) VALUES (112233, 1);
+INSERT INTO [ictDb_dev].[dbo].[StudentClasses]([Student_Id],[Class_Id]) VALUES (112233, 2);
+INSERT INTO [ictDb_dev].[dbo].[StudentClasses]([Student_Id],[Class_Id]) VALUES (112233, 3);
+INSERT INTO [ictDb_dev].[dbo].[StudentClasses]([Student_Id],[Class_Id]) VALUES (112233, 4);
+INSERT INTO [ictDb_dev].[dbo].[StudentClasses]([Student_Id],[Class_Id]) VALUES (112233, 5);
+
+INSERT INTO [ictDb_dev].[dbo].[StudentClasses]([Student_Id],[Class_Id]) VALUES (223344, 1);
+INSERT INTO [ictDb_dev].[dbo].[StudentClasses]([Student_Id],[Class_Id]) VALUES (223344, 2);
+INSERT INTO [ictDb_dev].[dbo].[StudentClasses]([Student_Id],[Class_Id]) VALUES (223344, 3);
+INSERT INTO [ictDb_dev].[dbo].[StudentClasses]([Student_Id],[Class_Id]) VALUES (223344, 4);

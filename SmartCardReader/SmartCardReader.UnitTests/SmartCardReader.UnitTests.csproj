@@ -71,7 +71,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="SmartCardReaderTestClass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -82,6 +82,10 @@
     <ProjectReference Include="..\SmartCardReader.ServiceLayer\SmartCardReader.ServiceLayer.csproj">
       <Project>{F0B700FC-F591-4033-BCA7-FF9A9CA2B12B}</Project>
       <Name>SmartCardReader.ServiceLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SmartCardReader.WebUI\SmartCardReader.WebUI.csproj">
+      <Project>{4ad2a041-cfc8-4faf-bfe9-aab409253011}</Project>
+      <Name>SmartCardReader.WebUI</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

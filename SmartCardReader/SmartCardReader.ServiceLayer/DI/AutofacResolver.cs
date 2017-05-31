@@ -1,9 +1,9 @@
 ﻿using Autofac;
-using Autofac.Integration.Mvc;
 using SmartCardReader.DataAccessLayer.Concrete;
 using SmartCardReader.DataAccessLayer.Repository;
 using SmartCardReader.DataAccessLayer.Repository.Base;
 using SmartCardReader.ServiceLayer.Base.Class;
+using SmartCardReader.ServiceLayer.Base.Student;
 using SmartCardReader.ServiceLayer.Implementation;
 
 namespace SmartCardReader.ServiceLayer.DI
@@ -41,6 +41,8 @@ namespace SmartCardReader.ServiceLayer.DI
             containerBuilder.RegisterType<EfDbContext>().As<EfDbContext>();
             containerBuilder.RegisterType<ClassRepository>().As<IClassRepository>();
             containerBuilder.RegisterType<ClassService>().As<IClassService>();
+            containerBuilder.RegisterType<StudentRepository>().As<IStudentRepository>();
+            containerBuilder.RegisterType<StudentService>().As<IStudentService>();
         }
     }
 }

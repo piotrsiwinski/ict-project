@@ -19,7 +19,7 @@ namespace SmartCardReader.WebUI.api.Controllers
 {
     public class ClassController : ApiController
     {
-        private IClassService _classService = AutofacResolver.Resolve<IClassService>();
+        private readonly IClassService _classService = AutofacResolver.Resolve<IClassService>();
         private EfDbContext db = new EfDbContext();
 
         public ClassController()

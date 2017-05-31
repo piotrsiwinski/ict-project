@@ -1,66 +1,51 @@
-﻿@model SmartCardReader.WebUI.Models.Student
+﻿@model SmartCardReader.WebUI.ViewModels.StudentViewModel
 
 @{
-   // Layout = null;
+    // Layout = null;
 }
 
 <!DOCTYPE html>
 
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width"/>
     <title>Details</title>
 </head>
 <body>
-    <div>
-        <h4>Student</h4>
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.Name)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.Name)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.Surname)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.Surname)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.Transcript_number)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.Transcript_number)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.Major)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.Major)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.Email_address)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.Email_address)
-            </dd>
-    
-        </dl>
-    </div>
-    <p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-        @Html.ActionLink("Back to List", "Index")
-    </p>
+<div>
+    <h4>Student</h4>
+    <hr/>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new {id = Model.Id}) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
 </body>
 </html>

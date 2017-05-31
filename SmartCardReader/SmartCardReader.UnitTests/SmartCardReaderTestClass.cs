@@ -1,21 +1,24 @@
-﻿using System;
-using System.Diagnostics;
-using System.Linq;
+﻿using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SmartCardReader.DataAccessLayer.Concrete;
-using SmartCardReader.ServiceLayer.Implementation;
 using Autofac;
 using SmartCardReader.ServiceLayer.Base.Class;
+using SmartCardReader.ServiceLayer.Base.Student;
+using SmartCardReader.ServiceLayer.Configuration;
 using SmartCardReader.ServiceLayer.DI;
 
 namespace SmartCardReader.UnitTests
 {
     [TestClass]
-    public class UnitTest1
+    public class SmartCardReaderTestClass
     {
+        public SmartCardReaderTestClass()
+        {
+            AutoMapperServiceConfiguration.Configure();
+        }
         private static IContainer Container { get; set; }
         [TestMethod]
-        public void TestMethod1()
+        public void EfDbContextTest()
         {
             var _ctx = new EfDbContext();
             var result = _ctx.Courses.ToList();
@@ -26,6 +29,13 @@ namespace SmartCardReader.UnitTests
         {
             var classService = AutofacResolver.Resolve<IClassService>();
             var result = classService.GetClassesResponse().ToList();
+        }
+
+        [TestMethod]
+        public void TestStudentService()
+        {
+            var studentService = AutofacResolver.Resolve<IStudentService>();
+            var result = studentService.GetAllStudentsResponse().ToList();
         }
     }
 }

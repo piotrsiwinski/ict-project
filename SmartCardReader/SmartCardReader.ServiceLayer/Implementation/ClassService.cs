@@ -12,17 +12,10 @@ namespace SmartCardReader.ServiceLayer.Implementation
 {
     public class ClassService : IClassService
     {
-        private static IContainer Container { get; set; }
-
         private readonly IClassRepository _classRepository;
 
         public ClassService()
         {
-            Mapper.Initialize(cfg =>
-            {
-                cfg.CreateMap<Class, ClassResponse>()
-                    .ForMember(dest => dest.Lecturers, opts => opts.MapFrom(src => src.Course.Lecturers.Select(x => x.FirstName + x.LastName)));
-            });
         }
 
         public ClassService(IClassRepository classRepository) : this()

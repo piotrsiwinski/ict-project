@@ -72,7 +72,9 @@
     <Compile Include="Repository\Abstract\AbstractRepository.cs" />
     <Compile Include="Repository\Abstract\IRepository.cs" />
     <Compile Include="Repository\Base\IClassRepository.cs" />
+    <Compile Include="Repository\Base\IStudentRepository.cs" />
     <Compile Include="Repository\ClassRepository.cs" />
+    <Compile Include="Repository\StudentRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

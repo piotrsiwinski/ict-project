@@ -11,7 +11,7 @@ namespace SmartCardReader.DataAccessLayer.Repository.Abstract
     {
         protected readonly EfDbContext Context;
 
-        public AbstractRepository(EfDbContext context)
+        protected AbstractRepository(EfDbContext context)
         {
             Context = context;
         }

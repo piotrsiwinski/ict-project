@@ -114,9 +114,14 @@
     <Compile Include="Base\Account\AbstractAccountService.cs" />
     <Compile Include="Base\Account\IAccountService.cs" />
     <Compile Include="Base\Class\IClassService.cs" />
+    <Compile Include="Base\Student\IStudentService.cs" />
+    <Compile Include="Configuration\AutoMapperProfiles\ClassProfile.cs" />
+    <Compile Include="Configuration\AutoMapperProfiles\StudentProfile.cs" />
     <Compile Include="DI\AutofacResolver.cs" />
     <Compile Include="Implementation\ClassService.cs" />
+    <Compile Include="Implementation\StudentService.cs" />
     <Compile Include="Models\Response\ClassResponse.cs" />
+    <Compile Include="Models\Response\StudentResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
