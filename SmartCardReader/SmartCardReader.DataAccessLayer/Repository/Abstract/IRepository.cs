@@ -19,6 +19,6 @@ namespace SmartCardReader.DataAccessLayer.Repository.Abstract
         void RemoveRange(IEnumerable<TEntity> entities);
 
         void Edit(TEntity entity);
-        void Save();
+        int Save();
     }
 }

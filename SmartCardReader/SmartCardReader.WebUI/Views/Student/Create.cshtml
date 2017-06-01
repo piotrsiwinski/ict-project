@@ -46,6 +46,31 @@
                     @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
                 </div>
             </div>
+            
+            <div class="form-group">
+                @Html.LabelFor(model => model.University, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.University, @Model.UniversitieSelectListItems, "Select University", new {id ="UniversityDropdown", @class = "form-control"})
+                    @Html.ValidationMessageFor(model => model.University, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            
+            <div class="form-group">
+                @Html.LabelFor(model => model.Faculty, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.Faculty, @Model.UniversitieSelectListItems, "Select Faculty", new {id ="FacultyDropdown", @class = "form-control", disabled=true})
+                    @Html.ValidationMessageFor(model => model.University, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            
+            <div class="form-group">
+                @Html.LabelFor(model => model.Majors, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.Majors, @Model.MajorsSelectListItems, "Select Majors", new {id ="MajorsDropdown", @class = "form-control", disabled=true})
+                    @Html.ValidationMessageFor(model => model.Majors, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
     
             
     

@@ -1,20 +1,5 @@
 ﻿@model IEnumerable<SmartCardReader.WebUI.ViewModels.StudentViewModel>
 
-@{
-    //  Layout = null;
-}
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width"/>
-    <title>Index</title>
-</head>
-<body>
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
@@ -22,6 +7,9 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            Available operations
         </th>
     </tr>
 
@@ -43,5 +31,7 @@
     }
 
 </table>
-</body>
-</html>
+
+<p>
+    @Html.ActionLink("Create New", "Create", null,  new {@class = "btn btn-primary"})
+</p>

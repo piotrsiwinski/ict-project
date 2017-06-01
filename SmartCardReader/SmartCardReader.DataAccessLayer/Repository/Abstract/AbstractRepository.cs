@@ -34,16 +34,20 @@ namespace SmartCardReader.DataAccessLayer.Repository.Abstract
         public void Add(T entity)
         {
             Context.Set<T>().Add(entity);
+            Save();
         }
 
         public void AddRange(IEnumerable<T> entities)
         {
             Context.Set<T>().AddRange(entities);
+            Save();
         }
 
         public void Remove(T entity)
         {
+            Context.Set<T>().Attach(entity);
             Context.Set<T>().Remove(entity);
+            Save();
         }
 
         public void RemoveRange(IEnumerable<T> entities)
@@ -53,12 +57,14 @@ namespace SmartCardReader.DataAccessLayer.Repository.Abstract
 
         public void Edit(T entity)
         {
+            
             Context.Entry(entity).State = EntityState.Modified;
+            Save();
         }
 
-        public void Save()
+        public int Save()
         {
-            Context.SaveChanges();
+            return Context.SaveChanges();
         }
     }
 }

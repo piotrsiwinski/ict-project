@@ -63,18 +63,27 @@
     <Compile Include="Models\Class.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\Faculty.cs" />
+    <Compile Include="Models\FacultyModel.cs" />
     <Compile Include="Models\Lecturer.cs" />
     <Compile Include="Models\Major.cs" />
     <Compile Include="Models\MajorBase.cs" />
+    <Compile Include="Models\MajorBaseModel.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Models\University.cs" />
+    <Compile Include="Models\UniversityModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\Abstract\AbstractRepository.cs" />
     <Compile Include="Repository\Abstract\IRepository.cs" />
     <Compile Include="Repository\Base\IClassRepository.cs" />
+    <Compile Include="Repository\Base\IFacultyRepository.cs" />
+    <Compile Include="Repository\Base\IMajorRepository.cs" />
     <Compile Include="Repository\Base\IStudentRepository.cs" />
+    <Compile Include="Repository\Base\IUniversityRepository.cs" />
     <Compile Include="Repository\ClassRepository.cs" />
+    <Compile Include="Repository\FacultyRepository.cs" />
+    <Compile Include="Repository\MajorBaseRepository.cs" />
     <Compile Include="Repository\StudentRepository.cs" />
+    <Compile Include="Repository\UniversityRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
