@@ -124,6 +124,7 @@
     <Compile Include="Implementation\FacultyService.cs" />
     <Compile Include="Implementation\MajorBaseService.cs" />
     <Compile Include="Implementation\StudentService.cs" />
+    <Compile Include="Models\Request\ClassRequest.cs" />
     <Compile Include="Models\Request\StudentRequest.cs" />
     <Compile Include="Models\Response\ClassResponse.cs" />
     <Compile Include="Models\Response\CreateStudentResponse.cs" />

@@ -44,7 +44,7 @@ public class SubjectService {
         String json = gson.toJson(event);
 
         //TODO: Insert right url
-        URL url = new URL(this.URL + "Events");
+        URL url = new URL(this.URL + "Class");
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 
         connection.setDoOutput(true);

@@ -32,5 +32,6 @@ namespace SmartCardReader.DataAccessLayer.Concrete
         public DbSet<MajorBase> MajorBase { get; set; }
         public DbSet<Student> Students { get; set; }
         public DbSet<University> Universities { get; set; }
+        public DbSet<StudentClassesEntity> ClassesEntities { get; set; }
     }
 }

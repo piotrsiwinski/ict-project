@@ -9,6 +9,7 @@ namespace SmartCardReader.DataAccessLayer.Repository
     {
         public ClassRepository(EfDbContext context) : base(context)
         {
+            
         }
     }
 }

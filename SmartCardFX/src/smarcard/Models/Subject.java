@@ -1,7 +1,10 @@
 package smarcard.Models;
 
-import lombok.Data;
 import com.google.gson.annotations.SerializedName;
+import lombok.Data;
+
+import java.sql.Date;
+import java.util.List;
 
 /**
  * Created by Piotrek on 18.05.2017.
@@ -9,19 +12,23 @@ import com.google.gson.annotations.SerializedName;
 @Data
 public class Subject {
     @SerializedName("Id")
-    public int Id;
+    public int id;
 
-    @SerializedName("Teacher_ID")
-    public String teacherId;
+    @SerializedName("StartDateTime")
+    public Date startDateTime;
 
-    @SerializedName("Teacher_Name")
-    public String teacherName;
+    @SerializedName("CourseName")
+    public String courseName;
 
-    @SerializedName("Teacher_Surname")
-    public String teacherSuername;
+    @SerializedName("Lecturers")
+    List<String> lecturers;
 
-    @SerializedName("Subject_Name")
-    public String subjectName;
-
-
+    public String describeSubject() {
+        StringBuilder builder = new StringBuilder();
+        for(String l : lecturers){
+            builder.append(l);
+            builder.append(" ");
+        }
+        return courseName + " | " + builder.toString() + " | " + startDateTime.toString();
+    }
 }

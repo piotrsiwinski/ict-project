@@ -69,6 +69,7 @@
     <Compile Include="Models\MajorBase.cs" />
     <Compile Include="Models\MajorBaseModel.cs" />
     <Compile Include="Models\Student.cs" />
+    <Compile Include="Models\StudentClassesEntity.cs" />
     <Compile Include="Models\University.cs" />
     <Compile Include="Models\UniversityModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

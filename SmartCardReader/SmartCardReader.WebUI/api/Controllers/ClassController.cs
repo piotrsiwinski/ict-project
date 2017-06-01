@@ -8,11 +8,14 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
+using Newtonsoft.Json.Converters;
 using SmartCardReader.DataAccessLayer.Concrete;
 using SmartCardReader.DataAccessLayer.Models;
 using SmartCardReader.ServiceLayer.Base.Class;
+using SmartCardReader.ServiceLayer.Base.Student;
 using SmartCardReader.ServiceLayer.DI;
 using SmartCardReader.ServiceLayer.Implementation;
+using SmartCardReader.ServiceLayer.Models.Request;
 using SmartCardReader.ServiceLayer.Models.Response;
 
 namespace SmartCardReader.WebUI.api.Controllers
@@ -20,6 +23,7 @@ namespace SmartCardReader.WebUI.api.Controllers
     public class ClassController : ApiController
     {
         private readonly IClassService _classService = AutofacResolver.Resolve<IClassService>();
+        private readonly IStudentService _studentService = AutofacResolver.Resolve<IStudentService>();
         private EfDbContext db = new EfDbContext();
 
         public ClassController()
@@ -38,92 +42,28 @@ namespace SmartCardReader.WebUI.api.Controllers
             return result;
         }
 
-        // GET: api/Class/5
-        [ResponseType(typeof(Class))]
-        public IHttpActionResult GetClass(int id)
-        {
-            Class @class = db.Classes.Find(id);
-            if (@class == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(@class);
-        }
-
-        // PUT: api/Class/5
-        [ResponseType(typeof(void))]
-        public IHttpActionResult PutClass(int id, Class @class)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            if (id != @class.Id)
-            {
-                return BadRequest();
-            }
-
-            db.Entry(@class).State = EntityState.Modified;
-
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ClassExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return StatusCode(HttpStatusCode.NoContent);
-        }
 
         // POST: api/Class
         [ResponseType(typeof(Class))]
-        public IHttpActionResult PostClass(Class @class)
+        public IHttpActionResult PostClass([FromBody] ClassRequest classRequest)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.Classes.Add(@class);
-            db.SaveChanges();
-
-            return CreatedAtRoute("DefaultApi", new { id = @class.Id }, @class);
-        }
-
-        // DELETE: api/Class/5
-        [ResponseType(typeof(Class))]
-        public IHttpActionResult DeleteClass(int id)
-        {
-            Class @class = db.Classes.Find(id);
-            if (@class == null)
+            var studentClass = new StudentClassesEntity
             {
-                return NotFound();
-            }
+                ClassId = classRequest.ClassId,
+                StudentId = classRequest.StudentId
+            };
 
-            db.Classes.Remove(@class);
-            db.SaveChanges();
-
-            return Ok(@class);
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
+            using (var ctx = new EfDbContext())
             {
-                db.Dispose();
+                ctx.ClassesEntities.Add(studentClass);
+                ctx.SaveChanges();
             }
-            base.Dispose(disposing);
+            return CreatedAtRoute("DefaultApi", new {id = classRequest.StudentId}, classRequest);
         }
 
         private bool ClassExists(int id)

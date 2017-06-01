@@ -1,8 +1,7 @@
 package sample.MainWindow;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -12,23 +11,18 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
-
-import jdk.nashorn.internal.parser.JSONParser;
 import services.SubjectService;
 import smarcard.CardConnector;
 import smarcard.Models.Event;
 import smarcard.Models.Student;
 import smarcard.Models.Subject;
-import smarcard.Models.SubjectsList;
 import smarcard.SmartCard;
 
 import javax.smartcardio.CardTerminal;
-import java.io.FileReader;
-import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.*;
-import java.util.stream.Collector;
+import java.util.Arrays;
+import java.util.List;
+import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
 
@@ -111,9 +105,11 @@ public class MainWindowController implements Initializable {
     private void getAvailableEvents() {
         String result = subjectService.getSubjects();
         try {
-            Gson gson = new Gson();
+//            Gson gson = new Gson();
+            Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
             this.subjects = gson.fromJson(result, Subject[].class);
-            List<String> arr = Arrays.stream(subjects).map(x -> x.getSubjectName()).collect(Collectors.toList());
+            List<String> arr = Arrays.stream(subjects).map(x -> x.describeSubject()).collect(Collectors.toList());
+
 
             this.items = FXCollections.observableArrayList(arr.toArray(new String[0]));
             this.subjectComboBox.setItems(items);
@@ -130,10 +126,11 @@ public class MainWindowController implements Initializable {
 
     private void sendEvent() {
         try {
-            String result = this.subjectComboBox.getValue().toString();
-            Subject subject = Arrays.stream(subjects).filter(x -> x.getSubjectName().equals(result)).findFirst().get();
-            Event event = new Event(this.studentData.getIndexNumber(), subject.getId());
-            System.out.println(subject.toString());
+            int selectedIndex = this.subjectComboBox.getSelectionModel().getSelectedIndex();
+            Subject selectedSubject = subjects[selectedIndex];
+            Event event = new Event("121273", selectedSubject.getId());
+//            Event event = new Event(this.studentData.getIndexNumber(), selectedSubject.getId());
+
             int response = this.subjectService.addEventToStudent(event);
             if (200 <= response && response < 300) {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -141,8 +138,8 @@ public class MainWindowController implements Initializable {
                 alert.setHeaderText("Success");
                 alert.setContentText("Successfully added you to event");
                 alert.showAndWait();
-            }else{
-                throw new Exception("Server responded with code: " +  response);
+            } else {
+                throw new Exception("Server responded with code: " + response);
             }
 
         } catch (NullPointerException e) {

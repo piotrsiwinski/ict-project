@@ -5,6 +5,5 @@ namespace SmartCardReader.DataAccessLayer.Repository.Base
 {
     public interface IClassRepository : IRepository<Class>
     {
-        
     }
 }

@@ -14,7 +14,7 @@ namespace SmartCardReader.UnitTests
     {
         public SmartCardReaderTestClass()
         {
-            AutoMapperServiceConfiguration.Configure();
+            //AutoMapperServiceConfiguration.Configure();
         }
         private static IContainer Container { get; set; }
         [TestMethod]

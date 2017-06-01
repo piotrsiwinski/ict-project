@@ -214,6 +214,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Configuration\AutoMapperWebConfiguration.cs" />
+    <Compile Include="Configuration\Profiles\ClassProfile.cs" />
     <Compile Include="Configuration\Profiles\StudentProfile.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\EventController.cs" />

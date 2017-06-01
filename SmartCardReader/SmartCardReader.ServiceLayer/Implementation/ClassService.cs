@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Autofac;
 using Autofac.Core;
@@ -6,6 +7,7 @@ using AutoMapper;
 using SmartCardReader.DataAccessLayer.Models;
 using SmartCardReader.DataAccessLayer.Repository.Base;
 using SmartCardReader.ServiceLayer.Base.Class;
+using SmartCardReader.ServiceLayer.Models.Request;
 using SmartCardReader.ServiceLayer.Models.Response;
 
 namespace SmartCardReader.ServiceLayer.Implementation
@@ -28,6 +30,14 @@ namespace SmartCardReader.ServiceLayer.Implementation
             var result = _classRepository.GetAll().ToList();
             var test = Mapper.Map<List<Class>, List<ClassResponse>>(result);
             return test;
+        }
+
+        public void AddClassToStudent(ClassRequest classRequest)
+        {
+            var cls = new Class{Id = classRequest.ClassId, StartDateTime = DateTime.Today};
+            cls.Students.Add(new Student{Id = classRequest.StudentId});
+            
+            _classRepository.Add(cls);
         }
 
         ICollection<Class> IClassService.GetClasses()

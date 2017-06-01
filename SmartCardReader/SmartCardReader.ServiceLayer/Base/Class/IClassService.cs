@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using SmartCardReader.DataAccessLayer.Models;
+using SmartCardReader.ServiceLayer.Models.Request;
 using SmartCardReader.ServiceLayer.Models.Response;
 
 namespace SmartCardReader.ServiceLayer.Base.Class
@@ -8,5 +9,6 @@ namespace SmartCardReader.ServiceLayer.Base.Class
     {
         ICollection<DataAccessLayer.Models.Class> GetClasses();
         ICollection<ClassResponse> GetClassesResponse();
+        void AddClassToStudent(ClassRequest classRequest);
     }
 }

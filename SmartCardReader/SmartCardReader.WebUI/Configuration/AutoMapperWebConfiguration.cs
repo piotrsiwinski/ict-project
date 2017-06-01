@@ -12,6 +12,8 @@ namespace SmartCardReader.WebUI.Configuration
             {
                 cfg.AddProfile<StudentProfile>();
                 cfg.AddProfile<ClassProfile>();
+                cfg.AddProfile<Profiles.ClassProfile>();
+                
                 cfg.AddProfile<ServiceLayer.Configuration.AutoMapperProfiles.StudentProfile>();
             });
         }

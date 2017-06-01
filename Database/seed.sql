@@ -73,16 +73,17 @@ INSERT INTO [ictDb_dev].[dbo].[Classes]([Id],[StartDateTime],[Course_Id]) VALUES
 SET IDENTITY_INSERT [ictDb_dev].[dbo].[Classes] OFF
 
 -- MajorCourses
-INSERT INTO [MajorCourses]([Major_Id], [Course_Id]) VALUES(6, 1);
-INSERT INTO [MajorCourses]([Major_Id], [Course_Id]) VALUES(6, 2);
-INSERT INTO [MajorCourses]([Major_Id], [Course_Id]) VALUES(6, 3);
-INSERT INTO [MajorCourses]([Major_Id], [Course_Id]) VALUES(6, 4);
-INSERT INTO [MajorCourses]([Major_Id], [Course_Id]) VALUES(6, 5);
-INSERT INTO [MajorCourses]([Major_Id], [Course_Id]) VALUES(6, 6);
-INSERT INTO [MajorCourses]([Major_Id], [Course_Id]) VALUES(6, 7);
-INSERT INTO [MajorCourses]([Major_Id], [Course_Id]) VALUES(6, 8);
-INSERT INTO [MajorCourses]([Major_Id], [Course_Id]) VALUES(6, 9);
-INSERT INTO [MajorCourses]([Major_Id], [Course_Id]) VALUES(6, 10);
+-- MajorCourses
+INSERT INTO [ictDb_dev].[dbo].[MajorCourses]([Major_Id], [Course_Id]) VALUES(6, 1);
+INSERT INTO [ictDb_dev].[dbo].[MajorCourses]([Major_Id], [Course_Id]) VALUES(6, 2);
+INSERT INTO [ictDb_dev].[dbo].[MajorCourses]([Major_Id], [Course_Id]) VALUES(6, 3);
+INSERT INTO [ictDb_dev].[dbo].[MajorCourses]([Major_Id], [Course_Id]) VALUES(6, 4);
+INSERT INTO [ictDb_dev].[dbo].[MajorCourses]([Major_Id], [Course_Id]) VALUES(6, 5);
+INSERT INTO [ictDb_dev].[dbo].[MajorCourses]([Major_Id], [Course_Id]) VALUES(6, 6);
+INSERT INTO [ictDb_dev].[dbo].[MajorCourses]([Major_Id], [Course_Id]) VALUES(6, 7);
+INSERT INTO [ictDb_dev].[dbo].[MajorCourses]([Major_Id], [Course_Id]) VALUES(6, 8);
+INSERT INTO [ictDb_dev].[dbo].[MajorCourses]([Major_Id], [Course_Id]) VALUES(6, 9);
+INSERT INTO [ictDb_dev].[dbo].[MajorCourses]([Major_Id], [Course_Id]) VALUES(6, 10);
 
 -- ACCOUNT
 INSERT INTO [ictDb_dev].[dbo].[AspNetUsers]([Id],[FirstName],[LastName],[Email],[EmailConfirmed],[PasswordHash],[SecurityStamp],[PhoneNumber],[PhoneNumberConfirmed],[TwoFactorEnabled],[LockoutEndDateUtc],[LockoutEnabled],[AccessFailedCount],[UserName]) VALUES('66a5590c-c3ea-4fc1-bc4b-0cc35b0b4ba4',NULL,NULL, 'test@wp.pl', 0, 'AHxO7sfKBzxdTGRcB8+bUNLshMr0S8yLQWbtSTVP/kq5AkNhwzo+pN3lyMY+Co8r4A==', '8d6b5765-3697-4824-80d8-68c0547e84fe',NULL,0,0,NULL,1,0,'test@wp.pl');
