@@ -128,8 +128,8 @@ public class MainWindowController implements Initializable {
         try {
             int selectedIndex = this.subjectComboBox.getSelectionModel().getSelectedIndex();
             Subject selectedSubject = subjects[selectedIndex];
-            Event event = new Event("121273", selectedSubject.getId());
-//            Event event = new Event(this.studentData.getIndexNumber(), selectedSubject.getId());
+//            Event event = new Event("112233", selectedSubject.getId());
+            Event event = new Event(this.studentData.getIndexNumber(), selectedSubject.getId());
 
             int response = this.subjectService.addEventToStudent(event);
             if (200 <= response && response < 300) {

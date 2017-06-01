@@ -11,6 +11,6 @@ public class Event {
     @SerializedName("StudentId")
     private String studentId;
 
-    @SerializedName("SubjectId")
+    @SerializedName("ClassId")
     private int subjectId;
 }

@@ -217,6 +217,8 @@
     <Compile Include="Configuration\Profiles\ClassProfile.cs" />
     <Compile Include="Configuration\Profiles\StudentProfile.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AttendanceController.cs" />
+    <Compile Include="Controllers\CoursesController.cs" />
     <Compile Include="Controllers\EventController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -234,6 +236,7 @@
     </Compile>
     <Compile Include="ViewModels\AccountViewModels.cs" />
     <Compile Include="Models\Event.cs" />
+    <Compile Include="ViewModels\CourseViewModel.cs" />
     <Compile Include="ViewModels\ManageViewModels.cs" />
     <Compile Include="Models\Subject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -267,6 +270,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Views\Courses\AttendanceList.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -318,6 +322,16 @@
     <Content Include="Views\Event\Details.cshtml" />
     <Content Include="Views\Event\Edit.cshtml" />
     <Content Include="Views\Event\Index.cshtml" />
+    <Content Include="Views\Courses\Create.cshtml" />
+    <Content Include="Views\Courses\Delete.cshtml" />
+    <Content Include="Views\Courses\Details.cshtml" />
+    <Content Include="Views\Courses\Edit.cshtml" />
+    <Content Include="Views\Courses\Index.cshtml" />
+    <Content Include="Views\Attendance\Create.cshtml" />
+    <Content Include="Views\Attendance\Delete.cshtml" />
+    <Content Include="Views\Attendance\Details.cshtml" />
+    <Content Include="Views\Attendance\Edit.cshtml" />
+    <Content Include="Views\Attendance\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SmartCardReader.DataAccessLayer\SmartCardReader.DataAccessLayer.csproj">

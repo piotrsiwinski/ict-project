@@ -27,7 +27,7 @@
                 @if ((System.Web.HttpContext.Current.User != null) && System.Web.HttpContext.Current.User.Identity.IsAuthenticated)
                 {
                     <li>@Html.ActionLink("Students", "Index", "Student")</li>
-                    <li>@Html.ActionLink("Subjects", "Index", "Subject")</li>
+                    <li>@Html.ActionLink("Courses", "Index", "Courses")</li>
                     <li>@Html.ActionLink("Events", "Index", "Event")</li>
                 }
 

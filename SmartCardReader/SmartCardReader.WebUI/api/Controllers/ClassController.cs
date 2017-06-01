@@ -58,10 +58,19 @@ namespace SmartCardReader.WebUI.api.Controllers
                 StudentId = classRequest.StudentId
             };
 
-            using (var ctx = new EfDbContext())
+            var ctx = new EfDbContext();
+            try
             {
                 ctx.ClassesEntities.Add(studentClass);
                 ctx.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.ToString());
+            }
+            finally
+            {
+                ctx.Dispose();
             }
             return CreatedAtRoute("DefaultApi", new {id = classRequest.StudentId}, classRequest);
         }
