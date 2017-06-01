@@ -38,7 +38,7 @@ namespace SmartCardReader.WebUI.api.Controllers
         // GET: api/Class
         public List<ClassResponse> GetClasses()
         {
-            var result = _classService.GetClassesResponse().Where(x => x.StartDateTime > DateTime.Now).ToList();
+            var result = _classService.GetClassesResponse().Where(x => x.StartDateTime > DateTime.Now.AddMinutes(-20) && x.StartDateTime < DateTime.Now.AddMinutes(90)).ToList();
             return result;
         }
 

@@ -50,7 +50,7 @@ namespace SmartCardReader.WebUI.Controllers
         {
             var test = db.Classes.Find(id);
             var classesEntities = db.ClassesEntities.Include(s => s.Class).Include(s => s.Student);
-            var result = classesEntities.Where(x=> x.Class.Id == test.Id);
+            var result = classesEntities.Where(x => x.Class.Id == test.Id);
             return View(result.ToList());
         }
 
@@ -141,6 +141,34 @@ namespace SmartCardReader.WebUI.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public ActionResult CreateClass(int id)
+        {
+            var model = new Class
+            {
+                Course = new Course {Id = id}
+            };
+
+            return View(model);
+        }
+
+        // POST: Classes/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateClass([Bind(Include = "Id,StartDateTime")] Class @class)
+        {
+            if (ModelState.IsValid)
+            {
+                @class.Course = db.Courses.Find(@class.Id);
+                db.Classes.Add(@class);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View(@class);
         }
     }
 }

@@ -5,11 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<h2>Your Courses</h2>
 @if (@Model.Any())
 {
     <table class="table">
@@ -28,6 +24,7 @@
                 </td>
                 <td>
 
+                    @Html.ActionLink("Create class", "CreateClass", new {id = item.Id})
                     @Html.ActionLink("Details", "Details", new {id = item.Id})
 
                 </td>
