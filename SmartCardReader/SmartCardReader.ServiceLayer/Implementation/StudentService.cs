@@ -60,7 +60,10 @@ namespace SmartCardReader.ServiceLayer.Implementation
 
         public void AddStudent(StudentRequest studentRequest)
         {
-            _studentRepository.Add(Mapper.Map<StudentRequest, Student>(studentRequest));
+            
+            var student = Mapper.Map<StudentRequest, Student>(studentRequest);
+            student.Id = 0;
+            _studentRepository.Add(student);
         }
 
         public void DeleteStudent(StudentRequest studentRequest)

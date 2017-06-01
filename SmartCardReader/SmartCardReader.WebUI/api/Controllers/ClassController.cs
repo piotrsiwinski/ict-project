@@ -38,7 +38,7 @@ namespace SmartCardReader.WebUI.api.Controllers
         // GET: api/Class
         public List<ClassResponse> GetClasses()
         {
-            var result = _classService.GetClassesResponse().ToList();
+            var result = _classService.GetClassesResponse().Where(x => x.StartDateTime > DateTime.Now).ToList();
             return result;
         }
 
@@ -52,10 +52,12 @@ namespace SmartCardReader.WebUI.api.Controllers
                 return BadRequest(ModelState);
             }
 
+            var student = db.Students.FirstOrDefault(x => x.IndexNumber == classRequest.StudentId);
+
             var studentClass = new StudentClassesEntity
             {
                 ClassId = classRequest.ClassId,
-                StudentId = classRequest.StudentId
+                StudentId = student.Id
             };
 
             var ctx = new EfDbContext();

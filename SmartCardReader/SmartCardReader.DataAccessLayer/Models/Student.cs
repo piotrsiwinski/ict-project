@@ -13,6 +13,7 @@ namespace SmartCardReader.DataAccessLayer.Models
         public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public int IndexNumber { get; set; }
         public virtual ICollection<Major> Majors { get; set; }
         public virtual ICollection<Class> Classes { get; set; }
     }

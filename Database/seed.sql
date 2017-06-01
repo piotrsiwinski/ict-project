@@ -69,6 +69,7 @@ INSERT INTO [ictDb_dev].[dbo].[Classes]([Id],[StartDateTime],[Course_Id]) VALUES
 INSERT INTO [ictDb_dev].[dbo].[Classes]([Id],[StartDateTime],[Course_Id]) VALUES(4, '2017-04-20 15:45', 3);
 INSERT INTO [ictDb_dev].[dbo].[Classes]([Id],[StartDateTime],[Course_Id]) VALUES(5, '2017-04-06 15:45', 3);
 INSERT INTO [ictDb_dev].[dbo].[Classes]([Id],[StartDateTime],[Course_Id]) VALUES(6, '2017-03-23 15:45', 3);
+INSERT INTO [ictDb_dev].[dbo].[Classes]([Id],[StartDateTime],[Course_Id]) VALUES(7, '2017-06-15 15:45', 3);
 
 SET IDENTITY_INSERT [ictDb_dev].[dbo].[Classes] OFF
 

@@ -15,8 +15,9 @@ namespace SmartCardReader.ServiceLayer.Configuration.AutoMapperProfiles
                 .ForMember(dest => dest.Classes, opts => opts.MapFrom(src => src.Classes.Select(x => x.Course.Name)))
                 .ForMember(dest => dest.Majors, opts => opts.MapFrom(src => src.Majors.Select(x => x.MajorBase.Name)));
 
-            CreateMap<StudentRequest, Student>();
-//                .ForAllMembers(x => x.AllowNull());
+            CreateMap<StudentRequest, Student>()
+                .ForMember(dst => dst.IndexNumber, opts => opts.MapFrom(x => x.Id))
+                .ForMember(dst => dst.Id, opts => opts.Ignore());
         }
     }
 }
